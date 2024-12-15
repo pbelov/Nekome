@@ -2,16 +2,11 @@ package com.chesire.nekome.kaspresso.screens
 
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
-import com.chesire.nekome.kaspresso.screens.BaseComposeScreen.Companion.composeTestRule
 import io.github.kakaocup.compose.node.element.ComposeScreen
 import io.github.kakaocup.compose.node.element.KNode
 
 /**
- * Method to interact with the [LoginCredentialsScreen].
- */
-
-/**
- * Robot to interact with the login credentials screen.
+ * Screen with basic asserts
  */
 open class BaseComposeScreen<out T : ComposeScreen<T>> :
     ComposeScreen<T>(semanticsProvider = composeTestRule) {

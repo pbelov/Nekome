@@ -8,14 +8,14 @@ import io.github.kakaocup.kakao.common.utilities.getResourceString
  * Method to interact with the [LoginCredentialsScreen].
  */
 fun loginCredentials(
-    func: LoginCredentialsComposeScreen.() -> Unit
-) = LoginCredentialsComposeScreen().apply(func)
+    func: ComposeLoginCredentialsScreen.() -> Unit
+) = ComposeLoginCredentialsScreen().apply(func)
 
 /**
  * Robot to interact with the login credentials screen.
  */
-class LoginCredentialsComposeScreen :
-    BaseComposeScreen<LoginCredentialsComposeScreen>() {
+class ComposeLoginCredentialsScreen :
+    BaseComposeScreen<ComposeLoginCredentialsScreen>() {
 
     /**
      * Enters the username.

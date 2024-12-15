@@ -1,12 +1,13 @@
 package com.chesire.nekome.kaspresso.screens
 
+import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
 import com.chesire.nekome.ui.MainActivityTags
 
 fun main(
-    func: MainComposeScreen.() -> Unit
-) = MainComposeScreen().apply(func)
+    func: ComposeMainScreen.() -> Unit
+) = ComposeMainScreen().apply(func)
 
-class MainComposeScreen : BaseComposeScreen<MainComposeScreen>() {
+class ComposeMainScreen : BaseComposeScreen<ComposeMainScreen>() {
 
     // ACTIONS
 
