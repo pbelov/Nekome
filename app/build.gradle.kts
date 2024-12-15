@@ -132,5 +132,8 @@ dependencies {
     androidTestImplementation(libs.androidx.test.rules)
     androidTestImplementation(libs.google.hilt.android.testing)
     androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.kaspresso)
+    androidTestImplementation(libs.kaspresso.compose.support)
+
     kspAndroidTest(libs.google.hilt.android.compiler)
 }

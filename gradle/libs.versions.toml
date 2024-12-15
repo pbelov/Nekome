@@ -11,6 +11,8 @@ coil = "2.6.0"
 compose-compiler = "1.5.8"
 detekt = "1.23.5"
 hilt = "2.51.1"
+kaspresso = "1.5.5"
+kaspresso-compose-support = "1.5.5"
 kotlin = "1.9.22"
 kotlin-coroutines = "1.8.0"
 mockk = "1.13.10"
@@ -73,6 +75,8 @@ google-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compil
 google-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 google-material = { module = "com.google.android.material:material", version = "1.11.0" }
 junit = { module = "junit:junit", version = "4.13.2" }
+kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspresso" }
+kaspresso-compose-support = { module = "com.kaspersky.android-components:kaspresso-compose-support", version.ref = "kaspresso-compose-support" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
