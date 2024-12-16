@@ -1,16 +1,12 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.flags.UserSeriesStatus
 import com.chesire.nekome.helpers.getResource
-import com.chesire.nekome.robots.DialogResultsRobot
-import com.chesire.nekome.robots.DialogRobot
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 
 /**
  * Robot to interact with the default series state dialog.
@@ -60,7 +56,8 @@ class DefaultSeriesStateAssert : DialogAsserts() {
      */
     // TODO: move indexes to separate constants
     fun isLoadedCorrectly() {
-        val collection = getRule().onAllNodesWithTag(DialogTags.OptionText, true)
+        val collection = BaseComposeScreen.getRule()
+            .onAllNodesWithTag(DialogTags.OptionText, true)
         collection[0].assertTextContains(UserSeriesStatus.Current.stringId.getResource())
         collection[1].assertTextContains(UserSeriesStatus.Completed.stringId.getResource())
         collection[2].assertTextContains(UserSeriesStatus.OnHold.stringId.getResource())

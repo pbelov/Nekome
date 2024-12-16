@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.tests
+package com.chesire.nekome.kaspresso.tests.base
 
 import com.chesire.nekome.datasource.auth.remote.AuthApi
 import com.chesire.nekome.datasource.auth.remote.AuthDomain

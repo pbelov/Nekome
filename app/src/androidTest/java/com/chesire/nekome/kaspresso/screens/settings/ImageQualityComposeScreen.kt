@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains

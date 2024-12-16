@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import com.chesire.nekome.app.settings.config.ui.ConfigTags
 import com.chesire.nekome.helpers.getResource
@@ -98,15 +98,16 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
      */
     infix fun assert(func: SettingsScreenAsserts.() -> Unit) =
         SettingsScreenAsserts().apply(func)
-}
 
-/**
- * Robot to check the results for the config screen.
- */
-class SettingsScreenAsserts : DialogAsserts() {
 
     /**
-     * Asserts the settings screen is shown.
+     * Robot to check the results for the config screen.
      */
-    override fun isOnScreen() = isOnScreen(ConfigTags.Root)
+    class SettingsScreenAsserts : DialogAsserts() {
+
+        /**
+         * Asserts the settings screen is shown.
+         */
+        override fun isOnScreen() = isOnScreen(ConfigTags.Root)
+    }
 }

@@ -2,20 +2,21 @@ package com.chesire.nekome.kaspresso.screens
 
 import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
 import com.chesire.nekome.kaspresso.getResource
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
 
 /**
  * Method to interact with the [LoginCredentialsScreen].
  */
 fun loginCredentialsScreen(
-    func: ComposeLoginCredentialsScreen.() -> Unit
-) = ComposeLoginCredentialsScreen().apply(func)
+    func: LoginCredentialsComposeScreen.() -> Unit
+) = LoginCredentialsComposeScreen().apply(func)
 
 /**
  * Robot to interact with the login credentials screen.
  */
-class ComposeLoginCredentialsScreen :
-    BaseComposeScreen<ComposeLoginCredentialsScreen>() {
+class LoginCredentialsComposeScreen :
+    BaseComposeScreen<LoginCredentialsComposeScreen>() {
 
     /**
      * Enters the username.

@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.preferences.flags.HomeScreenOptions
 import com.chesire.nekome.helpers.getResource
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 
 /**
  * Robot to interact with the default home screen dialog.

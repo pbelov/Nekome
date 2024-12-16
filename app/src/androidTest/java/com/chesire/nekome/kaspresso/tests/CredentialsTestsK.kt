@@ -3,6 +3,7 @@ package com.chesire.nekome.kaspresso.tests
 import com.chesire.nekome.datasource.auth.remote.AuthFailure
 import com.chesire.nekome.kaspresso.Helpers
 import com.chesire.nekome.kaspresso.screens.loginCredentialsScreen
+import com.chesire.nekome.kaspresso.tests.base.AuthBaseTestsK
 import com.github.michaelbull.result.Err
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.coEvery

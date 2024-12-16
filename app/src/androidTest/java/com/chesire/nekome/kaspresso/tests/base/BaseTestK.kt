@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.tests
+package com.chesire.nekome.kaspresso.tests.base
 
 import android.app.Activity
 import android.os.SystemClock
@@ -17,7 +17,7 @@ import com.chesire.nekome.helpers.createTestUser
 import com.chesire.nekome.helpers.login
 import com.chesire.nekome.helpers.logout
 import com.chesire.nekome.helpers.reset
-import com.chesire.nekome.kaspresso.screens.BaseComposeScreen
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.kaspresso.screens.mainScreen
 import com.chesire.nekome.ui.MainActivity
 import com.kaspersky.components.composesupport.config.withComposeSupport

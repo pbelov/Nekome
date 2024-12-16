@@ -2,6 +2,7 @@ package com.chesire.nekome.kaspresso.tests
 
 import com.chesire.nekome.core.preferences.flags.HomeScreenOptions
 import com.chesire.nekome.kaspresso.screens.mainScreen
+import com.chesire.nekome.kaspresso.tests.base.BaseTestK
 import com.chesire.nekome.ui.MainActivityTags
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test

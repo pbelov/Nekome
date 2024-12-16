@@ -1,8 +1,7 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.preferences.flags.Theme

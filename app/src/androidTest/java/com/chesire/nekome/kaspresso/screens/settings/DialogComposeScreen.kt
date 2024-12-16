@@ -1,6 +1,7 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.settings
 
 import com.chesire.nekome.core.compose.composables.DialogTags
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import io.github.kakaocup.compose.node.element.ComposeScreen
 
 /**

@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.screens
+package com.chesire.nekome.kaspresso.screens.base
 
 import androidx.compose.ui.test.SemanticsNodeInteractionCollection
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
@@ -82,7 +82,7 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
         }
 
         fun setRule(composeTestRule: ComposeContentTestRule) {
-            this.composeTestRule = composeTestRule
+            Companion.composeTestRule = composeTestRule
         }
     }
 }

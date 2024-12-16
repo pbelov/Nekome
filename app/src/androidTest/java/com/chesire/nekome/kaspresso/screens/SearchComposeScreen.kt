@@ -1,7 +1,7 @@
 package com.chesire.nekome.kaspresso.screens
 
-import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
 import com.chesire.nekome.app.search.search.ui.SearchTags
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
 import io.github.kakaocup.compose.node.element.KNode
 import io.github.kakaocup.kakao.common.utilities.getResourceString

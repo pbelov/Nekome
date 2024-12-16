@@ -4,6 +4,7 @@ import com.chesire.nekome.core.models.ErrorDomain
 import com.chesire.nekome.datasource.search.remote.SearchApi
 import com.chesire.nekome.kaspresso.screens.searchScreen
 import com.chesire.nekome.kaspresso.screens.seriesListScreen
+import com.chesire.nekome.kaspresso.tests.base.BaseTestK
 import com.chesire.nekome.ui.MainActivityTags
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok

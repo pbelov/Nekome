@@ -1,5 +1,6 @@
 package com.chesire.nekome.kaspresso.screens
 
+import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.ui.MainActivityTags
 
 fun mainScreen(
