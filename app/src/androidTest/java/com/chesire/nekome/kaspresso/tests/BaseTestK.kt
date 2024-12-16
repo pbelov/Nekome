@@ -18,7 +18,7 @@ import com.chesire.nekome.helpers.login
 import com.chesire.nekome.helpers.logout
 import com.chesire.nekome.helpers.reset
 import com.chesire.nekome.kaspresso.screens.BaseComposeScreen
-import com.chesire.nekome.kaspresso.screens.main
+import com.chesire.nekome.kaspresso.screens.mainScreen
 import com.chesire.nekome.ui.MainActivity
 import com.kaspersky.components.composesupport.config.withComposeSupport
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
@@ -102,7 +102,7 @@ open class BaseTestK(
     protected fun goTo(homeScreenOptions: HomeScreenOptions? = null, tag: String) {
         launchWith(homeScreenOptions)
 
-        main {
+        mainScreen {
             goTo(tag)
         }
     }

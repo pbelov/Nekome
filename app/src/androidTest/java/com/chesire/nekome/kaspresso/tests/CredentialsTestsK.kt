@@ -2,7 +2,7 @@ package com.chesire.nekome.kaspresso.tests
 
 import com.chesire.nekome.datasource.auth.remote.AuthFailure
 import com.chesire.nekome.kaspresso.Helpers
-import com.chesire.nekome.kaspresso.screens.loginCredentials
+import com.chesire.nekome.kaspresso.screens.loginCredentialsScreen
 import com.github.michaelbull.result.Err
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.coEvery
@@ -15,7 +15,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
     fun emptyUsernameShowsError() {
         launchActivity()
 
-        loginCredentials {
+        loginCredentialsScreen {
             enterUsername("")
             enterPassword(Helpers.testPassword)
             assert {
@@ -35,7 +35,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
     fun emptyPasswordShowsError() {
         launchActivity()
 
-        loginCredentials {
+        loginCredentialsScreen {
             enterUsername(Helpers.testUsername)
             enterPassword("")
             clickLogin()
@@ -59,7 +59,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
 
         launchActivity()
 
-        loginCredentials {
+        loginCredentialsScreen {
             enterUsername(Helpers.testUsername)
             enterPassword(Helpers.testPassword)
             clickLogin()
@@ -80,7 +80,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
 
         launchActivity()
 
-        loginCredentials {
+        loginCredentialsScreen {
             enterUsername(Helpers.testUsername)
             enterPassword(Helpers.testPassword)
             clickLogin()

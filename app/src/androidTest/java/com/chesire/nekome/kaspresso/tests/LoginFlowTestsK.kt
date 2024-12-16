@@ -5,8 +5,8 @@ import com.chesire.nekome.datasource.user.remote.UserApi
 import com.chesire.nekome.helpers.creation.createSeriesDomain
 import com.chesire.nekome.helpers.creation.createUserDomain
 import com.chesire.nekome.kaspresso.Helpers
-import com.chesire.nekome.kaspresso.screens.loginCredentials
-import com.chesire.nekome.kaspresso.screens.main
+import com.chesire.nekome.kaspresso.screens.loginCredentialsScreen
+import com.chesire.nekome.kaspresso.screens.mainScreen
 import com.github.michaelbull.result.Ok
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.coEvery
@@ -50,7 +50,7 @@ class LoginFlowTestsK : AuthBaseTestsK(startLoggedIn = false) {
     fun navigateThroughLoginFlow() {
         launchActivity()
 
-        loginCredentials {
+        loginCredentialsScreen {
             assert {
                 isOnScreen()
                 isLoginButtonDisabled()
@@ -68,7 +68,7 @@ class LoginFlowTestsK : AuthBaseTestsK(startLoggedIn = false) {
             clickLogin()
         }
 
-        main {
+        mainScreen {
             assert {
                 isOnScreen()
             }

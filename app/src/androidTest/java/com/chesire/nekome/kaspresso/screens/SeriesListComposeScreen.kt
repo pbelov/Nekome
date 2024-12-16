@@ -8,13 +8,5 @@ fun seriesListScreen(
 
 class SeriesListComposeScreen : BaseComposeScreen<SeriesListComposeScreen>() {
 
-    // ACTIONS
-
-    fun goToSearch() {
-        getNodeWithTag(SeriesCollectionTags.SearchFab)
-            .performClick()
-    }
-
-    // VALIDATIONS
-
+    fun goToSearch() = clickOnNodeWithTag(SeriesCollectionTags.SearchFab)
 }

@@ -1,7 +1,13 @@
 package com.chesire.nekome.kaspresso.screens
 
+import androidx.compose.ui.test.SemanticsNodeInteractionCollection
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onLast
+import androidx.compose.ui.test.performClick
 import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
+import com.chesire.nekome.kaspresso.getResource
 import io.github.kakaocup.compose.node.element.ComposeScreen
 import io.github.kakaocup.compose.node.element.KNode
 
@@ -11,10 +17,32 @@ import io.github.kakaocup.compose.node.element.KNode
 open class BaseComposeScreen<out T : ComposeScreen<T>> :
     ComposeScreen<T>(semanticsProvider = composeTestRule) {
 
+    protected fun clickOnNodeWithText(text: String) {
+        getNodeWithText(text).performClick()
+    }
+
+    protected fun clickOnNodeWithTag(tag: String) {
+        getNodeWithTag(tag).performClick()
+    }
+
+    protected fun clickOnLastNode(stringId: Int) {
+        getAllNodesWithText(stringId.getResource())
+            .onLast()
+            .performClick()
+    }
+
     protected fun getNodeWithText(text: String): KNode {
         return child {
             hasText(text)
         }
+    }
+
+    protected fun getAllNodesWithText(text: String): SemanticsNodeInteractionCollection {
+        return composeTestRule.onAllNodesWithText(text)
+    }
+
+    protected fun getAllNodesWithTag(tag: String, useUnmergedTree: Boolean = false): SemanticsNodeInteractionCollection {
+        return composeTestRule.onAllNodesWithTag(tag, useUnmergedTree)
     }
 
     protected fun getNodeWithTag(tag: String): KNode {
@@ -23,7 +51,12 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
         }
     }
 
-    fun isOnScreen(tag: String) = getNodeWithTag(tag).assertIsSelected()
+    // TODO: check this
+    fun isSelected(tag: String) = getNodeWithTag(tag).assertIsSelected()
+
+    fun isOnScreen(tag: String) = getNodeWithTag(tag).assertIsDisplayed()
+
+    fun isNotOnScreen(tag: String) = getNodeWithTag(tag).assertIsNotDisplayed()
 
     fun checkSnackBarErrorText(
         text: String,
@@ -43,6 +76,10 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
 
     companion object {
         private lateinit var composeTestRule: ComposeContentTestRule
+
+        fun getRule(): ComposeContentTestRule {
+            return composeTestRule
+        }
 
         fun setRule(composeTestRule: ComposeContentTestRule) {
             this.composeTestRule = composeTestRule

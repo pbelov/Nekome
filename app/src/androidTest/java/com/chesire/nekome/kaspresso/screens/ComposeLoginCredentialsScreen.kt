@@ -1,13 +1,13 @@
 package com.chesire.nekome.kaspresso.screens
 
 import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
+import com.chesire.nekome.kaspresso.getResource
 import com.chesire.nekome.resources.StringResource
-import io.github.kakaocup.kakao.common.utilities.getResourceString
 
 /**
  * Method to interact with the [LoginCredentialsScreen].
  */
-fun loginCredentials(
+fun loginCredentialsScreen(
     func: ComposeLoginCredentialsScreen.() -> Unit
 ) = ComposeLoginCredentialsScreen().apply(func)
 
@@ -21,7 +21,7 @@ class ComposeLoginCredentialsScreen :
      * Enters the username.
      */
     fun enterUsername(username: String) {
-        getNodeWithText(getResourceString(StringResource.login_username))
+        getNodeWithText(StringResource.login_username.getResource())
             .performTextInput(username)
     }
 
@@ -29,7 +29,7 @@ class ComposeLoginCredentialsScreen :
      * Enters the password.
      */
     fun enterPassword(password: String) {
-        getNodeWithText(getResourceString(StringResource.login_password))
+        getNodeWithText(StringResource.login_password.getResource())
             .performTextInput(password)
     }
 
@@ -37,51 +37,43 @@ class ComposeLoginCredentialsScreen :
      * Clicks the login button.
      */
     fun clickLogin() {
-        getNodeWithText(getResourceString(StringResource.login_login))
-            .performClick()
+        clickOnNodeWithText(StringResource.login_login.getResource())
     }
 
     /**
      * Clicks the forgot password button.
      */
     fun clickForgotPassword() {
-        getNodeWithText(getResourceString(StringResource.login_forgot_password))
-            .performClick()
+        clickOnNodeWithText(StringResource.login_forgot_password.getResource())
     }
 
     /**
      * Clicks the sign up button.
      */
     fun clickSignUp() {
-        getNodeWithText(getResourceString(StringResource.login_sign_up_kitsu))
-            .performClick()
+        clickOnNodeWithText(StringResource.login_sign_up_kitsu.getResource())
     }
 
     /**
      * Executes validation steps.
      */
-    infix fun assert(func: LoginCredentialsResultAssert.() -> Unit) =
-        LoginCredentialsResultAssert().apply { func() }
+    infix fun assert(func: LoginCredentialsAssert.() -> Unit) =
+        LoginCredentialsAssert().apply { func() }
 }
 
 /**
  * Robot to check the results for the login details screen.
  */
-class LoginCredentialsResultAssert : BaseComposeScreen<LoginCredentialsResultAssert>() {
+class LoginCredentialsAssert : BaseComposeScreen<LoginCredentialsAssert>() {
 
-    fun isOnScreen() {
-        getNodeWithTag(CredentialsTags.Root)
-            .assertIsDisplayed()
-    }
+    fun isOnScreen() = isOnScreen(CredentialsTags.Root)
 
     fun isLoginButtonEnabled() {
-        getNodeWithText(getResourceString(StringResource.login_login))
-            .assertIsEnabled()
+        getNodeWithText(StringResource.login_login.getResource()).assertIsEnabled()
     }
 
     fun isLoginButtonDisabled() {
-        getNodeWithText(getResourceString(StringResource.login_login))
-            .assertIsNotEnabled()
+        getNodeWithText(StringResource.login_login.getResource()).assertIsNotEnabled()
     }
 
     /**
@@ -104,13 +96,13 @@ class LoginCredentialsResultAssert : BaseComposeScreen<LoginCredentialsResultAss
      * Asserts the error for having invalid credentials.
      */
     fun isInvalidCredentialsError() {
-        checkSnackBarErrorText(getResourceString(StringResource.login_error_credentials))
+        checkSnackBarErrorText(StringResource.login_error_credentials.getResource())
     }
 
     /**
      * Asserts a generic network error.
      */
     fun isGenericError() {
-        checkSnackBarErrorText(getResourceString(StringResource.login_error_generic))
+        checkSnackBarErrorText(StringResource.login_error_generic.getResource())
     }
 }

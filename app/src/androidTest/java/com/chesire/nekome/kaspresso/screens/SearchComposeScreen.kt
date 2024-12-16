@@ -23,26 +23,17 @@ class SearchComposeScreen : BaseComposeScreen<SearchComposeScreen>() {
     /**
      * Selects the anime chip.
      */
-    fun selectAnime() {
-        getNodeWithTag(SearchTags.Anime)
-            .performClick()
-    }
+    fun selectAnime() = clickOnNodeWithTag(SearchTags.Anime)
 
     /**
      * Selects the manga chip.
      */
-    fun selectManga() {
-        getNodeWithTag(SearchTags.Manga)
-            .performClick()
-    }
+    fun selectManga() = clickOnNodeWithTag(SearchTags.Manga)
 
     /**
      * Clicks the search button.
      */
-    fun clickSearch() {
-        getNodeWithTag(SearchTags.Search)
-            .performClick()
-    }
+    fun clickSearch() = clickOnNodeWithTag(SearchTags.Search)
 
     /**
      * Executes validation steps.
@@ -59,10 +50,7 @@ class SearchScreenAssert : BaseComposeScreen<SearchScreenAssert>() {
     /**
      * Asserts the search screen is shown.
      */
-    fun isOnScreen() {
-        getNodeWithTag(SearchTags.Root)
-            .assertIsDisplayed()
-    }
+    fun isOnScreen() = isOnScreen(SearchTags.Root)
 
     /**
      * Asserts the error for having no search term.
