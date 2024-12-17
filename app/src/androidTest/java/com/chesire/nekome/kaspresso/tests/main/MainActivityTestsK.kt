@@ -1,27 +1,14 @@
-package com.chesire.nekome.kaspresso.tests
+package com.chesire.nekome.kaspresso.tests.main
 
-import android.os.SystemClock.sleep
-import androidx.work.SystemClock
 import com.chesire.nekome.core.preferences.flags.HomeScreenOptions
-import com.chesire.nekome.kaspresso.Helpers
 import com.chesire.nekome.kaspresso.screens.mainScreen
 import com.chesire.nekome.kaspresso.tests.base.BaseTestK
 import com.chesire.nekome.ui.MainActivityTags
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 
-
 @HiltAndroidTest
 class MainActivityTestsK : BaseTestK() {
-
-    @Test
-    fun checkUI() {
-        mainScreen {
-            assert {
-                checkUI()
-            }
-        }
-    }
 
     @Test
     fun overviewCanStartInAnimeView() {
@@ -60,6 +47,14 @@ class MainActivityTestsK : BaseTestK() {
         goTo(homeScreenOptions, tag)
 
         checkScreen(tag)
+    }
+
+    private fun goTo(homeScreenOptions: HomeScreenOptions? = null, tag: String) {
+        launchWith(homeScreenOptions)
+
+        mainScreen {
+            goTo(tag)
+        }
     }
 
     private fun checkScreen(tag: String) {

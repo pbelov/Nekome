@@ -18,7 +18,6 @@ import com.chesire.nekome.helpers.login
 import com.chesire.nekome.helpers.logout
 import com.chesire.nekome.helpers.reset
 import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
-import com.chesire.nekome.kaspresso.screens.mainScreen
 import com.chesire.nekome.ui.MainActivity
 import com.kaspersky.components.composesupport.config.withComposeSupport
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
@@ -30,6 +29,9 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 import javax.inject.Inject
 
+/**
+ * K is for Kaspresso. just to avoid class name duplication with existing ones
+ */
 @RunWith(AndroidJUnit4::class)
 open class BaseTestK(
     private val activityClass: Class<out Activity> = MainActivity::class.java,
@@ -99,14 +101,7 @@ open class BaseTestK(
         SystemClock.sleep(200)
     }
 
-    protected fun goTo(homeScreenOptions: HomeScreenOptions? = null, tag: String) {
-        launchWith(homeScreenOptions)
-
-        mainScreen {
-            goTo(tag)
-        }
-    }
-
+    // [pbelov]: can be moved to specific test, but I'd like to leave it here for any case in the future
     protected fun launchWith(homeScreenOptions: HomeScreenOptions? = null) {
         if (homeScreenOptions != null) {
             runBlocking {

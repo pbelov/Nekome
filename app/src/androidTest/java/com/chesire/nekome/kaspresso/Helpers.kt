@@ -8,9 +8,9 @@ fun Int.getResource() = getResourceString(this)
 object Helpers {
     const val TEST_USERNAME = "Username"
     const val TEST_PASSWORD = "Password"
+}
 
-    fun KNode.checkAccess() {
-        assertIsDisplayed()
-        assertIsDisplayed()
-    }
+fun KNode.checkAccess() {
+    assertIsDisplayed()
+    assertIsDisplayed()
 }

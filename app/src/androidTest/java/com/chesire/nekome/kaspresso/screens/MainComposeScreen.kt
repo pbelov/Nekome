@@ -1,7 +1,7 @@
 package com.chesire.nekome.kaspresso.screens
 
 import com.chesire.nekome.app.series.collection.ui.SeriesCollectionTags
-import com.chesire.nekome.kaspresso.Helpers.checkAccess
+import com.chesire.nekome.kaspresso.checkAccess
 import com.chesire.nekome.kaspresso.getResource
 import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
