@@ -11,32 +11,38 @@ import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 /**
  * Robot to interact with the default series state dialog.
  */
-class DefaultSeriesStateRobot : DialogComposeScreen<DefaultSeriesStateRobot>() {
+open class DefaultSeriesStateRobot : DialogComposeScreen<DefaultSeriesStateRobot>() {
+
+    val statusCurrent = getNodeWithText(UserSeriesStatus.Current.stringId.getResource())
+    val statusCompleted = getNodeWithText(UserSeriesStatus.Completed.stringId.getResource())
+    val statusOnHold = getNodeWithText(UserSeriesStatus.OnHold.stringId.getResource())
+    val statusDropped = getNodeWithText(UserSeriesStatus.Dropped.stringId.getResource())
+    val statusPlanned = getNodeWithText(UserSeriesStatus.Planned.stringId.getResource())
 
     /**
      * Picks the "Current" option.
      */
-    fun chooseCurrent() = clickOnNodeWithText(UserSeriesStatus.Current.stringId.getResource())
+    fun chooseCurrent() = statusCurrent.performClick()
 
     /**
      * Picks the "Completed" option.
      */
-    fun chooseCompleted() = clickOnNodeWithText(UserSeriesStatus.Completed.stringId.getResource())
+    fun chooseCompleted() = statusCompleted.performClick()
 
     /**
      * Picks the "On hold" option.
      */
-    fun chooseOnHold() = clickOnNodeWithText(UserSeriesStatus.OnHold.stringId.getResource())
+    fun chooseOnHold() = statusOnHold.performClick()
 
     /**
      * Picks the "Dropped" option.
      */
-    fun chooseDropped() = clickOnNodeWithText(UserSeriesStatus.Dropped.stringId.getResource())
+    fun chooseDropped() = statusDropped.performClick()
 
     /**
      * Picks the "Planned" option.
      */
-    fun choosePlanned() = clickOnNodeWithText(UserSeriesStatus.Planned.stringId.getResource())
+    fun choosePlanned() = statusPlanned.performClick()
 
     /**
      * Executes validation steps.
@@ -49,7 +55,7 @@ class DefaultSeriesStateRobot : DialogComposeScreen<DefaultSeriesStateRobot>() {
 /**
  * Robot to check the results for the default series state dialog.
  */
-class DefaultSeriesStateAssert : DialogAsserts() {
+class DefaultSeriesStateAssert : DefaultSeriesStateRobot() {
 
     /**
      * Assert that the options are in the correct locations.

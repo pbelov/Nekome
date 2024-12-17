@@ -7,7 +7,7 @@ import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.preferences.flags.TitleLanguage
 import com.chesire.nekome.helpers.getResource
 
-class TitleLanguageComposeScreen : DialogComposeScreen<TitleLanguageComposeScreen>() {
+open class TitleLanguageComposeScreen : DialogComposeScreen<TitleLanguageComposeScreen>() {
 
     /**
      * Picks the "Canonical" option.
@@ -48,7 +48,7 @@ class TitleLanguageComposeScreen : DialogComposeScreen<TitleLanguageComposeScree
 /**
  * Robot to check the results for the title language dialog.
  */
-class TitleLanguageAssert: DialogAsserts() {
+class TitleLanguageAssert: TitleLanguageComposeScreen() {
 
     /**
      * Assert that the options are in the correct locations.

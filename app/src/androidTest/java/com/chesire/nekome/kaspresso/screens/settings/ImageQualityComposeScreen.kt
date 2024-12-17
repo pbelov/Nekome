@@ -7,7 +7,7 @@ import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.preferences.flags.ImageQuality
 import com.chesire.nekome.helpers.getResource
 
-class ImageQualityComposeScreen : DialogComposeScreen<ImageQualityComposeScreen>() {
+open class ImageQualityComposeScreen : DialogComposeScreen<ImageQualityComposeScreen>() {
 
     /**
      * Picks the "Low" option.
@@ -41,7 +41,7 @@ class ImageQualityComposeScreen : DialogComposeScreen<ImageQualityComposeScreen>
 /**
  * Robot to check the results for the image quality dialog.
  */
-class ImageQualityAssert : DialogAsserts() {
+class ImageQualityAssert : ImageQualityComposeScreen() {
 
     /**
      * Assert that the options are in the correct locations.

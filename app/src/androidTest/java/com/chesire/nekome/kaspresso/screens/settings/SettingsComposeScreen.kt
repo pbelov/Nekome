@@ -13,14 +13,22 @@ fun settingsScreen(func: SettingsComposeScreen.() -> Unit) =
 /**
  * Robot to interact with the config screen.
  */
-class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
+open class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
+
+    override val root = getNodeWithTag(ConfigTags.Root)
+
+    val licenses = getNodeWithText(StringResource.settings_licenses.getResource())
+    val rateOnCompletion = getNodeWithText(StringResource.settings_rate_on_completion_summary.getResource())
+    val theme = getNodeWithText(StringResource.settings_theme.getResource())
+    val languageTitle = getNodeWithText(StringResource.settings_title_language_title.getResource())
+    val imageQuality = getNodeWithText(StringResource.settings_image_quality_title.getResource())
+    val defaultHome = getNodeWithText(StringResource.settings_default_home_title.getResource())
+    val defaultSeriesStatus = getNodeWithText(StringResource.settings_default_series_status_title.getResource())
 
     /**
      * Opens the default series state dialog.
      */
-    fun clickDefaultSeriesState() {
-        clickOnNodeWithText(StringResource.settings_default_series_status_title.getResource())
-    }
+    fun clickDefaultSeriesState() = defaultSeriesStatus.performClick()
 
     /**
      * Options for selecting the default series state.
@@ -31,9 +39,7 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Opens the default home screen dialog.
      */
-    fun clickDefaultHomeScreen() {
-        clickOnNodeWithText(StringResource.settings_default_home_title.getResource())
-    }
+    fun clickDefaultHomeScreen() = defaultHome.performClick()
 
     /**
      * Options for selecting the default home screen.
@@ -44,9 +50,7 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Opens the image quality dialog.
      */
-    fun clickImageQuality() {
-        clickOnNodeWithText(StringResource.settings_image_quality_title.getResource())
-    }
+    fun clickImageQuality() = imageQuality.performClick()
 
     /**
      * Options for selecting the image quality.
@@ -57,10 +61,7 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Opens the title language dialog.
      */
-    fun clickTitleLanguage() {
-        clickOnNodeWithText(StringResource.settings_title_language_title.getResource())
-    }
-
+    fun clickTitleLanguage() = languageTitle.performClick()
     /**
      * Options for selecting the title language.
      */
@@ -70,9 +71,7 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Opens the theme dialog.
      */
-    fun clickTheme() {
-        clickOnNodeWithText(StringResource.settings_theme.getResource())
-    }
+    fun clickTheme() = theme.performClick()
 
     /**
      * Options for selecting the theme.
@@ -82,16 +81,12 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Toggles the rate on completion setting.
      */
-    fun changeRateOnComplete() {
-        clickOnNodeWithText(StringResource.settings_rate_on_completion_summary.getResource())
-    }
+    fun changeRateOnComplete() = rateOnCompletion.performClick()
 
     /**
      * Open the licenses screen.
      */
-    fun goToLicenses() {
-        clickOnNodeWithText(StringResource.settings_licenses.getResource())
-    }
+    fun goToLicenses() = licenses.performClick()
 
     /**
      * Executes validation steps.
@@ -103,11 +98,11 @@ class SettingsComposeScreen : DialogComposeScreen<SettingsComposeScreen>() {
     /**
      * Robot to check the results for the config screen.
      */
-    class SettingsScreenAsserts : DialogAsserts() {
+    class SettingsScreenAsserts : SettingsComposeScreen() {
 
         /**
          * Asserts the settings screen is shown.
          */
-        override fun isOnScreen() = isOnScreen(ConfigTags.Root)
+        fun isOnScreen() = root.assertIsDisplayed()
     }
 }

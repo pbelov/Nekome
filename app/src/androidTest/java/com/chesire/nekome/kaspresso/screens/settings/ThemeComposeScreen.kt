@@ -10,7 +10,7 @@ import com.chesire.nekome.helpers.getResource
 /**
  * Robot to interact with the theme dialog.
  */
-class ThemeComposeScreen : DialogComposeScreen<ThemeComposeScreen>() {
+open class ThemeComposeScreen : DialogComposeScreen<ThemeComposeScreen>() {
 
     /**
      * Open the theme dialog, and picks the "System default" option.
@@ -45,7 +45,7 @@ class ThemeComposeScreen : DialogComposeScreen<ThemeComposeScreen>() {
     /**
      * Robot to check the results for the theme dialog.
      */
-    class ThemeAsserts : DialogAsserts() {
+    class ThemeAsserts : ThemeComposeScreen() {
 
         /**
          * Assert that the options are in the correct locations.
