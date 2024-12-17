@@ -4,6 +4,7 @@ import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
 import com.chesire.nekome.kaspresso.getResource
 import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
+import io.github.kakaocup.compose.node.element.KNode
 
 /**
  * Method to interact with the [LoginCredentialsComposeScreen].
@@ -22,7 +23,7 @@ class LoginCredentialsComposeScreen :
      * Enters the username.
      */
     fun enterUsername(username: String) {
-        getNodeWithText(StringResource.login_username.getResource())
+        getNodeWithTag(StringResource.login_username.getResource())
             .performTextInput(username)
     }
 
@@ -39,6 +40,10 @@ class LoginCredentialsComposeScreen :
      */
     fun clickLogin() {
         clickOnNodeWithText(StringResource.login_login.getResource())
+    }
+
+    fun clickShowPassword() {
+        clickOnNodeWithContentDesc(StringResource.login_show_password.getResource())
     }
 
     /**
@@ -68,6 +73,38 @@ class LoginCredentialsComposeScreen :
 class LoginCredentialsAssert : BaseComposeScreen<LoginCredentialsAssert>() {
 
     fun isOnScreen() = isOnScreen(CredentialsTags.Root)
+
+    fun isLoginFieldExistsAndEditable() {
+        getNodeWithTag(CredentialsTags.Username).apply {
+            assertIsDisplayed()
+            assertIsEnabled()
+        }
+    }
+
+    fun isPasswordFieldExistsAndEditable() {
+        getNodeWithTag(CredentialsTags.Password).apply {
+            assertIsDisplayed()
+            assertIsEnabled()
+        }
+    }
+
+    fun showPasswordButtonState(on: Boolean) {
+        val node = if (on) {
+            getNodeWithContentDesc(StringResource.login_show_password.getResource())
+        } else {
+            getNodeWithContentDesc(StringResource.login_hide_password.getResource())
+        }
+
+        node.assertIsDisplayed()
+    }
+
+    fun isForgotPasswordButtonExists() {
+        getNodeWithText(StringResource.login_forgot_password.getResource())
+    }
+
+    fun isSignUpButtonExists() {
+        getNodeWithText(StringResource.login_sign_up_kitsu.getResource())
+    }
 
     fun isLoginButtonEnabled() {
         getNodeWithText(StringResource.login_login.getResource()).assertIsEnabled()

@@ -25,6 +25,10 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
         getNodeWithTag(tag).performClick()
     }
 
+    protected fun clickOnNodeWithContentDesc(contentDesc: String) {
+        getNodeWithContentDesc(contentDesc).performClick()
+    }
+
     protected fun clickOnLastNode(stringId: Int) {
         getAllNodesWithText(stringId.getResource())
             .onLast()
@@ -48,6 +52,12 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
     protected fun getNodeWithTag(tag: String): KNode {
         return child {
             hasTestTag(tag)
+        }
+    }
+
+    protected fun getNodeWithContentDesc(contentDesc: String): KNode {
+        return child {
+            hasContentDescription(contentDesc)
         }
     }
 
