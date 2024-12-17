@@ -3,6 +3,7 @@ package com.chesire.nekome.features.login
 import com.chesire.nekome.UITest
 import com.chesire.nekome.datasource.auth.remote.AuthApi
 import com.chesire.nekome.datasource.auth.remote.AuthFailure
+import com.chesire.nekome.kaspresso.Helpers
 import com.chesire.nekome.robots.login.loginCredentials
 import com.github.michaelbull.result.Err
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -24,7 +25,7 @@ class CredentialsTests : UITest() {
 
         loginCredentials(composeTestRule) {
             enterUsername("")
-            enterPassword("Password")
+            enterPassword(Helpers.TEST_PASSWORD)
             clickLogin()
         } validate {
             isEmptyEmailError()
@@ -36,7 +37,7 @@ class CredentialsTests : UITest() {
         launchActivity()
 
         loginCredentials(composeTestRule) {
-            enterUsername("Username")
+            enterUsername(Helpers.TEST_USERNAME)
             enterPassword("")
             clickLogin()
         } validate {
@@ -47,7 +48,7 @@ class CredentialsTests : UITest() {
     @Test
     fun invalidCredentialsShowsError() {
         coEvery {
-            authApi.login("Username", "Password")
+            authApi.login(Helpers.TEST_USERNAME, Helpers.TEST_PASSWORD)
         } coAnswers {
             Err(AuthFailure.InvalidCredentials)
         }
@@ -55,8 +56,8 @@ class CredentialsTests : UITest() {
         launchActivity()
 
         loginCredentials(composeTestRule) {
-            enterUsername("Username")
-            enterPassword("Password")
+            enterUsername(Helpers.TEST_USERNAME)
+            enterPassword(Helpers.TEST_PASSWORD)
             clickLogin()
         } validate {
             isInvalidCredentialsError()
@@ -66,7 +67,7 @@ class CredentialsTests : UITest() {
     @Test
     fun failureToLoginShowsError() {
         coEvery {
-            authApi.login("Username", "Password")
+            authApi.login(Helpers.TEST_USERNAME, Helpers.TEST_PASSWORD)
         } coAnswers {
             Err(AuthFailure.BadRequest)
         }
@@ -74,8 +75,8 @@ class CredentialsTests : UITest() {
         launchActivity()
 
         loginCredentials(composeTestRule) {
-            enterUsername("Username")
-            enterPassword("Password")
+            enterUsername(Helpers.TEST_USERNAME)
+            enterPassword(Helpers.TEST_PASSWORD)
             clickLogin()
         } validate {
             isGenericError()

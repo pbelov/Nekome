@@ -6,7 +6,7 @@ import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
 
 /**
- * Method to interact with the [LoginCredentialsScreen].
+ * Method to interact with the [LoginCredentialsComposeScreen].
  */
 fun loginCredentialsScreen(
     func: LoginCredentialsComposeScreen.() -> Unit
@@ -80,18 +80,20 @@ class LoginCredentialsAssert : BaseComposeScreen<LoginCredentialsAssert>() {
     /**
      * Asserts the error for an empty email field.
      */
-    fun isEmptyEmailError() {
-        getNodeWithTag(CredentialsTags.Username)
-        // TODO: Verify it is in error state
-    }
+    // is not actual on current version as of login button is not enabled in this case
+//    fun isEmptyEmailError() {
+//        getNodeWithTag(CredentialsTags.Username)
+//        // TODO: Verify it is in error state
+//    }
 
     /**
      * Asserts the error for an empty password field.
      */
-    fun isEmptyPasswordError() {
-        getNodeWithTag(CredentialsTags.Password)
-        // TODO: Verify it is in error state
-    }
+    // is not actual on current version as of login button is not enabled in this case
+//    fun isEmptyPasswordError() {
+//        getNodeWithTag(CredentialsTags.Password)
+//        // TODO: Verify it is in error state
+//    }
 
     /**
      * Asserts the error for having invalid credentials.

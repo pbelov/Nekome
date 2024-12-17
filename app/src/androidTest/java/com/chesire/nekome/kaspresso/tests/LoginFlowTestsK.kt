@@ -26,7 +26,7 @@ class LoginFlowTestsK : AuthBaseTestsK(startLoggedIn = false) {
 
     @Before
     fun setup() {
-        mockAuthOK(Helpers.testUsername, Helpers.testPassword)
+        mockAuthOK(Helpers.TEST_USERNAME, Helpers.TEST_PASSWORD)
 
         coEvery {
             seriesApi.retrieveAnime(any())
@@ -57,8 +57,8 @@ class LoginFlowTestsK : AuthBaseTestsK(startLoggedIn = false) {
                 isLoginButtonDisabled()
             }
 
-            enterUsername(Helpers.testUsername)
-            enterPassword(Helpers.testPassword)
+            enterUsername(Helpers.TEST_USERNAME)
+            enterPassword(Helpers.TEST_PASSWORD)
 
             // practice says that there is no failure if we trying to perform click on disabled button
             // that's why I added this additional check

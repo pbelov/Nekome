@@ -6,7 +6,7 @@ fun Int.getResource() = getResourceString(this)
 
 class Helpers {
     companion object {
-        val testUsername = "Username"
-        val testPassword = "Password"
+        const val TEST_USERNAME = "Username"
+        const val TEST_PASSWORD = "Password"
     }
 }

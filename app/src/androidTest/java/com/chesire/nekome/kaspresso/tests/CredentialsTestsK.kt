@@ -18,7 +18,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
 
         loginCredentialsScreen {
             enterUsername("")
-            enterPassword(Helpers.testPassword)
+            enterPassword(Helpers.TEST_PASSWORD)
             assert {
                 isLoginButtonDisabled()
             }
@@ -37,7 +37,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
         launchActivity()
 
         loginCredentialsScreen {
-            enterUsername(Helpers.testUsername)
+            enterUsername(Helpers.TEST_USERNAME)
             enterPassword("")
             clickLogin()
 
@@ -56,13 +56,13 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
 
     @Test
     fun invalidCredentialsShowsError() {
-        mockAuthErr(Helpers.testUsername, Helpers.testPassword, AuthFailure.InvalidCredentials)
+        mockAuthErr(Helpers.TEST_USERNAME, Helpers.TEST_PASSWORD, AuthFailure.InvalidCredentials)
 
         launchActivity()
 
         loginCredentialsScreen {
-            enterUsername(Helpers.testUsername)
-            enterPassword(Helpers.testPassword)
+            enterUsername(Helpers.TEST_USERNAME)
+            enterPassword(Helpers.TEST_PASSWORD)
             clickLogin()
 
             assert {
@@ -74,7 +74,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
     @Test
     fun failureToLoginShowsError() {
         coEvery {
-            authApi.login(Helpers.testUsername, Helpers.testPassword)
+            authApi.login(Helpers.TEST_USERNAME, Helpers.TEST_PASSWORD)
         } coAnswers {
             Err(AuthFailure.BadRequest)
         }
@@ -82,8 +82,8 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
         launchActivity()
 
         loginCredentialsScreen {
-            enterUsername(Helpers.testUsername)
-            enterPassword(Helpers.testPassword)
+            enterUsername(Helpers.TEST_USERNAME)
+            enterPassword(Helpers.TEST_PASSWORD)
             clickLogin()
 
             assert {
