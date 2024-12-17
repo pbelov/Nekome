@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.tests
+package com.chesire.nekome.kaspresso.tests.login
 
 import com.chesire.nekome.datasource.auth.remote.AuthFailure
 import com.chesire.nekome.kaspresso.Helpers

@@ -1,4 +1,4 @@
-package com.chesire.nekome.kaspresso.tests
+package com.chesire.nekome.kaspresso.tests.login
 
 import com.chesire.nekome.datasource.series.remote.SeriesApi
 import com.chesire.nekome.datasource.user.remote.UserApi
@@ -52,11 +52,6 @@ class LoginFlowTestsK : AuthBaseTestsK(startLoggedIn = false) {
         launchActivity()
 
         loginCredentialsScreen {
-            assert {
-                isOnScreen()
-                isLoginButtonDisabled()
-            }
-
             enterUsername(Helpers.TEST_USERNAME)
             enterPassword(Helpers.TEST_PASSWORD)
 

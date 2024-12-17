@@ -1,7 +1,7 @@
 package com.chesire.nekome.kaspresso
 
-import com.chesire.nekome.kaspresso.tests.CredentialsTestsK
-import com.chesire.nekome.kaspresso.tests.LoginFlowTestsK
+import com.chesire.nekome.kaspresso.tests.login.CredentialsTestsK
+import com.chesire.nekome.kaspresso.tests.login.LoginFlowTestsK
 import com.chesire.nekome.kaspresso.tests.MainActivityTestsK
 import com.chesire.nekome.kaspresso.tests.SearchTestsK
 import com.chesire.nekome.kaspresso.tests.SettingsTestsK
