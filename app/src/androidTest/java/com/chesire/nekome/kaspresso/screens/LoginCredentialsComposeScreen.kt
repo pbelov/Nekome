@@ -1,6 +1,7 @@
 package com.chesire.nekome.kaspresso.screens
 
 import com.chesire.nekome.app.login.credentials.ui.CredentialsTags
+import com.chesire.nekome.kaspresso.Helpers.checkAccess
 import com.chesire.nekome.kaspresso.getResource
 import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 import com.chesire.nekome.resources.StringResource
@@ -16,49 +17,45 @@ fun loginCredentialsScreen(
 /**
  * Robot to interact with the login credentials screen.
  */
-class LoginCredentialsComposeScreen :
-    BaseComposeScreen<LoginCredentialsComposeScreen>() {
+open class LoginCredentialsComposeScreen : BaseComposeScreen<LoginCredentialsComposeScreen>() {
+
+    val root = getNodeWithTag(CredentialsTags.Root)
+    val usernameField = getNodeWithTag(CredentialsTags.Username)
+    val passwordField = getNodeWithTag(CredentialsTags.Password)
+    val loginButton = getNodeWithText(StringResource.login_login.getResource())
+    val showPasswordButton = getNodeWithContentDesc(StringResource.login_show_password.getResource())
+    val hidePasswordButton = getNodeWithContentDesc(StringResource.login_hide_password.getResource())
+    val signUpButton = getNodeWithText(StringResource.login_sign_up_kitsu.getResource())
+    val forgotPasswordButton = getNodeWithText(StringResource.login_forgot_password.getResource())
+
+    val snackbar = getNodeWithTag(CredentialsTags.Snackbar)
 
     /**
      * Enters the username.
      */
-    fun enterUsername(username: String) {
-        getNodeWithTag(StringResource.login_username.getResource())
-            .performTextInput(username)
-    }
+    fun enterUsername(username: String) = usernameField.performTextInput(username)
 
     /**
      * Enters the password.
      */
-    fun enterPassword(password: String) {
-        getNodeWithText(StringResource.login_password.getResource())
-            .performTextInput(password)
-    }
+    fun enterPassword(password: String) = passwordField.performTextInput(password)
 
     /**
      * Clicks the login button.
      */
-    fun clickLogin() {
-        clickOnNodeWithText(StringResource.login_login.getResource())
-    }
+    fun clickLogin() = loginButton.performClick()
 
-    fun clickShowPassword() {
-        clickOnNodeWithContentDesc(StringResource.login_show_password.getResource())
-    }
+    fun clickShowPassword() = showPasswordButton.performClick()
 
     /**
      * Clicks the forgot password button.
      */
-    fun clickForgotPassword() {
-        clickOnNodeWithText(StringResource.login_forgot_password.getResource())
-    }
+    fun clickForgotPassword() = forgotPasswordButton.performClick()
 
     /**
      * Clicks the sign up button.
      */
-    fun clickSignUp() {
-        clickOnNodeWithText(StringResource.login_sign_up_kitsu.getResource())
-    }
+    fun clickSignUp() = signUpButton.performClick()
 
     /**
      * Executes validation steps.
@@ -70,49 +67,34 @@ class LoginCredentialsComposeScreen :
 /**
  * Robot to check the results for the login details screen.
  */
-class LoginCredentialsAssert : BaseComposeScreen<LoginCredentialsAssert>() {
+class LoginCredentialsAssert : LoginCredentialsComposeScreen() {
 
-    fun isOnScreen() = isOnScreen(CredentialsTags.Root)
+    fun checkUI() {
+        isOnScreen()
 
-    fun isLoginFieldExistsAndEditable() {
-        getNodeWithTag(CredentialsTags.Username).apply {
-            assertIsDisplayed()
-            assertIsEnabled()
-        }
+        usernameField.checkAccess()
+        passwordField.checkAccess()
+        forgotPasswordButton.checkAccess()
+        signUpButton.checkAccess()
+
+        isLoginButtonDisabled()
     }
 
-    fun isPasswordFieldExistsAndEditable() {
-        getNodeWithTag(CredentialsTags.Password).apply {
-            assertIsDisplayed()
-            assertIsEnabled()
-        }
-    }
+    fun isOnScreen() = root.assertIsDisplayed()
 
     fun showPasswordButtonState(on: Boolean) {
-        val node = if (on) {
-            getNodeWithContentDesc(StringResource.login_show_password.getResource())
+        if (on) {
+            showPasswordButton.assertIsDisplayed()
+            hidePasswordButton.assertIsNotDisplayed()
         } else {
-            getNodeWithContentDesc(StringResource.login_hide_password.getResource())
+            showPasswordButton.assertIsNotDisplayed()
+            hidePasswordButton.assertIsDisplayed()
         }
-
-        node.assertIsDisplayed()
     }
 
-    fun isForgotPasswordButtonExists() {
-        getNodeWithText(StringResource.login_forgot_password.getResource())
-    }
+    fun isLoginButtonEnabled() = loginButton.assertIsEnabled()
 
-    fun isSignUpButtonExists() {
-        getNodeWithText(StringResource.login_sign_up_kitsu.getResource())
-    }
-
-    fun isLoginButtonEnabled() {
-        getNodeWithText(StringResource.login_login.getResource()).assertIsEnabled()
-    }
-
-    fun isLoginButtonDisabled() {
-        getNodeWithText(StringResource.login_login.getResource()).assertIsNotEnabled()
-    }
+    fun isLoginButtonDisabled() = loginButton.assertIsNotEnabled()
 
     /**
      * Asserts the error for an empty email field.
@@ -145,4 +127,22 @@ class LoginCredentialsAssert : BaseComposeScreen<LoginCredentialsAssert>() {
     fun isGenericError() {
         checkSnackBarErrorText(StringResource.login_error_generic.getResource())
     }
+
+    private fun checkSnackBarErrorText(
+        text: String,
+        substring: Boolean = true,
+        ignoreCase: Boolean = true
+    ) {
+        snackbar
+            .child<KNode> {
+                hasAnyChild(
+                    androidx.compose.ui.test.hasText(
+                        text, ignoreCase = substring, substring = ignoreCase
+                    )
+                )
+            }
+            .assertIsDisplayed()
+    }
+
+
 }

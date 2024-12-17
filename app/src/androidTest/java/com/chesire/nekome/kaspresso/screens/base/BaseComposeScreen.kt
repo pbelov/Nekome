@@ -61,28 +61,9 @@ open class BaseComposeScreen<out T : ComposeScreen<T>> :
         }
     }
 
-    // TODO: check this
-    fun isSelected(tag: String) = getNodeWithTag(tag).assertIsSelected()
-
     fun isOnScreen(tag: String) = getNodeWithTag(tag).assertIsDisplayed()
 
     fun isNotOnScreen(tag: String) = getNodeWithTag(tag).assertIsNotDisplayed()
-
-    fun checkSnackBarErrorText(
-        text: String,
-        substring: Boolean = true,
-        ignoreCase: Boolean = true
-    ) {
-        getNodeWithTag(CredentialsTags.Snackbar)
-            .child<KNode> {
-                hasAnyChild(
-                    androidx.compose.ui.test.hasText(
-                        text, ignoreCase = substring, substring = ignoreCase
-                    )
-                )
-            }
-            .assertIsDisplayed()
-    }
 
     companion object {
         private lateinit var composeTestRule: ComposeContentTestRule

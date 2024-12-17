@@ -10,30 +10,33 @@ fun searchScreen(
     func: SearchComposeScreen.() -> Unit
 ) = SearchComposeScreen().apply(func)
 
-class SearchComposeScreen : BaseComposeScreen<SearchComposeScreen>() {
+open class SearchComposeScreen : BaseComposeScreen<SearchComposeScreen>() {
+
+    val root : KNode = getNodeWithTag(SearchTags.Root)
+    val searchField : KNode = getNodeWithTag(SearchTags.Input)
+    val animeType : KNode = getNodeWithTag(SearchTags.Anime)
+    val mangaType : KNode = getNodeWithTag(SearchTags.Manga)
+    val searchButton : KNode = getNodeWithTag(SearchTags.Search)
 
     /**
      * Enters the term to search for.
      */
-    fun searchTerm(term: String) {
-        getNodeWithTag(SearchTags.Input)
-            .performTextInput(term)
-    }
+    fun searchTerm(term: String) = searchField.performTextInput(term)
 
     /**
      * Selects the anime chip.
      */
-    fun selectAnime() = clickOnNodeWithTag(SearchTags.Anime)
+    fun selectAnime() = animeType.performClick()
 
     /**
      * Selects the manga chip.
      */
-    fun selectManga() = clickOnNodeWithTag(SearchTags.Manga)
+    fun selectManga() = mangaType.performClick()
 
     /**
      * Clicks the search button.
      */
-    fun clickSearch() = clickOnNodeWithTag(SearchTags.Search)
+    fun clickSearch() = searchButton.performClick()
 
     /**
      * Executes validation steps.
@@ -45,12 +48,25 @@ class SearchComposeScreen : BaseComposeScreen<SearchComposeScreen>() {
 /**
  * Robot to check the results for the search screen.
  */
-class SearchScreenAssert : BaseComposeScreen<SearchScreenAssert>() {
+class SearchScreenAssert : SearchComposeScreen() {
+
+    fun checkUI() {
+        isOnScreen()
+
+        searchField.assertIsDisplayed()
+        animeType.assertIsDisplayed()
+        mangaType.assertIsDisplayed()
+        searchButton.assertIsDisplayed()
+    }
+
+    fun isAnimeTypeSelected() = animeType.assertIsSelected()
+
+    fun isMangaTypeSelected() = mangaType.assertIsSelected()
 
     /**
      * Asserts the search screen is shown.
      */
-    fun isOnScreen() = isOnScreen(SearchTags.Root)
+    fun isOnScreen() = root.assertIsDisplayed()
 
     /**
      * Asserts the error for having no search term.

@@ -48,6 +48,7 @@ class CredentialsTestsK : AuthBaseTestsK(startLoggedIn = false) {
             // just in case
             clickLogin()
 
+            // check that nothing happened and we are on the same screen
             assert {
                 isOnScreen()
             }
