@@ -9,6 +9,10 @@ import org.junit.Test
 @HiltAndroidTest
 class LoginUITestsK : BaseTestK(startLoggedIn = false) {
 
+    companion object {
+        private const val TAG = "LoginUITestsK"
+    }
+
     @Before
     fun launch() {
         launchActivity()
@@ -24,21 +28,27 @@ class LoginUITestsK : BaseTestK(startLoggedIn = false) {
     }
 
     @Test
-    fun buttonShowPasswordDefaultStateTest() {
+    fun buttonShowPasswordDefaultStateTest() = run {
         loginCredentialsScreen {
             assert {
-                showPasswordButtonState(true)
+                step("[$TAG]: check is show password button is in initial state") {
+                    showPasswordButtonState(true)
+                }
             }
         }
     }
 
     @Test
-    fun buttonShowPasswordFlowTest() {
+    fun buttonShowPasswordFlowTest() = run {
         loginCredentialsScreen {
-            clickShowPassword()
+            step("[$TAG]: click on show password button to check that it's status changed") {
+                clickShowPassword()
+            }
 
             assert {
-                showPasswordButtonState(false)
+                step("[$TAG]: check that show button state changed to opposite (hide password)") {
+                    showPasswordButtonState(false)
+                }
             }
         }
     }
