@@ -9,7 +9,7 @@ fun seriesListScreen(
 
 class SeriesListComposeScreen : BaseComposeScreen<SeriesListComposeScreen>() {
 
-    val searchFAB = getNodeWithTag(SeriesCollectionTags.SearchFab)
+    private val searchFAB = getNodeWithTag(SeriesCollectionTags.SearchFab)
 
     fun goToSearch() = searchFAB.performClick()
 }

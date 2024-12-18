@@ -6,18 +6,17 @@ import androidx.compose.ui.test.onAllNodesWithTag
 import com.chesire.nekome.core.compose.composables.DialogTags
 import com.chesire.nekome.core.flags.UserSeriesStatus
 import com.chesire.nekome.helpers.getResource
-import com.chesire.nekome.kaspresso.screens.base.BaseComposeScreen
 
 /**
  * Robot to interact with the default series state dialog.
  */
 open class DefaultSeriesStateRobot : DialogComposeScreen<DefaultSeriesStateRobot>() {
 
-    val statusCurrent = getNodeWithText(UserSeriesStatus.Current.stringId.getResource())
-    val statusCompleted = getNodeWithText(UserSeriesStatus.Completed.stringId.getResource())
-    val statusOnHold = getNodeWithText(UserSeriesStatus.OnHold.stringId.getResource())
-    val statusDropped = getNodeWithText(UserSeriesStatus.Dropped.stringId.getResource())
-    val statusPlanned = getNodeWithText(UserSeriesStatus.Planned.stringId.getResource())
+    private val statusCurrent = getNodeWithText(UserSeriesStatus.Current.stringId.getResource())
+    private val statusCompleted = getNodeWithText(UserSeriesStatus.Completed.stringId.getResource())
+    private val statusOnHold = getNodeWithText(UserSeriesStatus.OnHold.stringId.getResource())
+    private val statusDropped = getNodeWithText(UserSeriesStatus.Dropped.stringId.getResource())
+    private val statusPlanned = getNodeWithText(UserSeriesStatus.Planned.stringId.getResource())
 
     /**
      * Picks the "Current" option.
@@ -57,52 +56,59 @@ open class DefaultSeriesStateRobot : DialogComposeScreen<DefaultSeriesStateRobot
  */
 class DefaultSeriesStateAssert : DefaultSeriesStateRobot() {
 
+    companion object {
+        private const val INDEX_STATUS_CURRENT = 0
+        private const val INDEX_STATUS_COMPLETED = 1
+        private const val INDEX_STATUS_ON_HOLD = 2
+        private const val INDEX_STATUS_DROPPED = 3
+        private const val INDEX_STATUS_PLANNED = 4
+    }
+
     /**
      * Assert that the options are in the correct locations.
      */
-    // TODO: move indexes to separate constants
     fun isLoadedCorrectly() {
-        val collection = BaseComposeScreen.getRule()
-            .onAllNodesWithTag(DialogTags.OptionText, true)
-        collection[0].assertTextContains(UserSeriesStatus.Current.stringId.getResource())
-        collection[1].assertTextContains(UserSeriesStatus.Completed.stringId.getResource())
-        collection[2].assertTextContains(UserSeriesStatus.OnHold.stringId.getResource())
-        collection[3].assertTextContains(UserSeriesStatus.Dropped.stringId.getResource())
-        collection[4].assertTextContains(UserSeriesStatus.Planned.stringId.getResource())
+        val collection = getRule().onAllNodesWithTag(DialogTags.OptionText, true)
+
+        collection[INDEX_STATUS_CURRENT].assertTextContains(UserSeriesStatus.Current.stringId.getResource())
+        collection[INDEX_STATUS_COMPLETED].assertTextContains(UserSeriesStatus.Completed.stringId.getResource())
+        collection[INDEX_STATUS_ON_HOLD].assertTextContains(UserSeriesStatus.OnHold.stringId.getResource())
+        collection[INDEX_STATUS_DROPPED].assertTextContains(UserSeriesStatus.Dropped.stringId.getResource())
+        collection[INDEX_STATUS_PLANNED].assertTextContains(UserSeriesStatus.Planned.stringId.getResource())
     }
 
     /**
      * Checks if the "Current" option is checked.
      */
     fun currentIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[0].assertIsSelected()
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_STATUS_CURRENT].assertIsSelected()
     }
 
     /**
      * Checks if the "Completed" option is checked.
      */
     fun completedIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[1].assertIsSelected()
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_STATUS_COMPLETED].assertIsSelected()
     }
 
     /**
      * Checks if the "On hold" option is checked.
      */
     fun onHoldIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[2].assertIsSelected()
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_STATUS_ON_HOLD].assertIsSelected()
     }
 
     /**
      * Checks if the "Dropped" option is checked.
      */
     fun droppedIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[3].assertIsSelected()
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_STATUS_DROPPED].assertIsSelected()
     }
 
     /**
      * Checks if the "Planned" option is checked.
      */
     fun plannedIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[4].assertIsSelected()
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_STATUS_PLANNED].assertIsSelected()
     }
 }

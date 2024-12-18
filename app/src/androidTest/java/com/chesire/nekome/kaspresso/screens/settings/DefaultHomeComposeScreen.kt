@@ -47,20 +47,25 @@ class DefaultHomeComposeScreen : DialogComposeScreen<DefaultHomeComposeScreen>()
  */
 class DefaultHomeScreenAsserts : BaseComposeScreen<DefaultHomeScreenAsserts>() {
 
+    companion object {
+        private const val INDEX_ANIME = 0
+        private const val INDEX_MANGA = 1
+    }
+
     /**
      * Assert that the options are in the correct locations.
      */
     fun isLoadedCorrectly() {
         val collection = getAllNodesWithTag(DialogTags.OptionText, true)
-        collection[0].assertTextContains(HomeScreenOptions.Anime.stringId.getResource())
-        collection[1].assertTextContains(HomeScreenOptions.Manga.stringId.getResource())
+        collection[INDEX_ANIME].assertTextContains(HomeScreenOptions.Anime.stringId.getResource())
+        collection[INDEX_MANGA].assertTextContains(HomeScreenOptions.Manga.stringId.getResource())
     }
 
     /**
      * Checks if the "Anime" option is checked.
      */
     fun animeIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[0]
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_ANIME]
             .assertIsSelected()
     }
 
@@ -68,7 +73,7 @@ class DefaultHomeScreenAsserts : BaseComposeScreen<DefaultHomeScreenAsserts>() {
      * Checks if the "Manga" option is checked.
      */
     fun mangaIsSelected() {
-        getAllNodesWithTag(DialogTags.OptionRadio, true)[1]
+        getAllNodesWithTag(DialogTags.OptionRadio, true)[INDEX_MANGA]
             .assertIsSelected()
     }
 }

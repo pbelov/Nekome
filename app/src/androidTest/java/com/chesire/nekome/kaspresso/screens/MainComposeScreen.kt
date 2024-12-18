@@ -31,8 +31,7 @@ open class MainComposeScreen : BaseComposeScreen<MainComposeScreen>() {
 
     fun goTo(tag: String) = getNodeWithTag(tag).performClick()
 
-    infix fun assert(func: MainScreenAssert.() -> Unit) =
-        MainScreenAssert().apply { func() }
+    infix fun assert(func: MainScreenAssert.() -> Unit) = MainScreenAssert().apply { func() }
 
     class MainScreenAssert : MainComposeScreen() {
 
