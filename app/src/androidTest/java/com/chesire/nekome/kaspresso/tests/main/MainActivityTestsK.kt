@@ -8,7 +8,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 
 @HiltAndroidTest
-class MainActivityTestsK : BaseTestK() {
+class MainActivityTestsK : BaseTestK(launchActivity = false) {
 
     @Test
     fun overviewCanStartInAnimeView() {

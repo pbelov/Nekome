@@ -11,7 +11,7 @@ import org.junit.Test
 class SearchUITestsK : SearchBaseTestK() {
 
     @Before
-    override fun openSearchScreen() {
+    fun openStartScreen() {
         super.openSearchScreen()
     }
 

@@ -35,7 +35,8 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 open class BaseTestK(
     private val activityClass: Class<out Activity> = MainActivity::class.java,
-    private val startLoggedIn: Boolean = true
+    private val startLoggedIn: Boolean = true,
+    private val launchActivity: Boolean = true
 ) : TestCase(
     kaspressoBuilder = Kaspresso.Builder.withComposeSupport()
 ) {
@@ -89,6 +90,10 @@ open class BaseTestK(
             user.createTestUser()
         } else {
             authProvider.logout()
+        }
+
+        if (launchActivity) {
+            launchActivity()
         }
     }
 

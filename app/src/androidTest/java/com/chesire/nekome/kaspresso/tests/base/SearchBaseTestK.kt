@@ -6,9 +6,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 @HiltAndroidTest
 open class SearchBaseTestK : BaseTestK() {
 
-    open fun openSearchScreen() {
-        launchActivity()
-
+    protected fun openSearchScreen() {
         seriesListScreen {
             goToSearch()
         }

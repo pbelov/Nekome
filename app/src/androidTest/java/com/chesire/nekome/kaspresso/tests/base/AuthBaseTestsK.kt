@@ -10,7 +10,8 @@ import io.mockk.coEvery
 import javax.inject.Inject
 
 @HiltAndroidTest
-open class AuthBaseTestsK(startLoggedIn: Boolean = false) : BaseTestK(startLoggedIn = startLoggedIn) {
+open class AuthBaseTestsK(startLoggedIn: Boolean = false) :
+    BaseTestK(startLoggedIn = startLoggedIn, launchActivity = false) {
 
     @Inject
     lateinit var authApi: AuthApi

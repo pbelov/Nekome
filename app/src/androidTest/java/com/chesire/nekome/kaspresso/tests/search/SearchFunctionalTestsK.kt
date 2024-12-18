@@ -22,7 +22,7 @@ class SearchFunctionalTestsK : SearchBaseTestK() {
     lateinit var searchApi: SearchApi
 
     @Before
-    override fun openSearchScreen() {
+    fun openStartScreen() {
         coEvery {
             searchApi.searchForAnime(GENERIC_ERROR)
         } coAnswers {

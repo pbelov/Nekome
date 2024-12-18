@@ -11,8 +11,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun canReachSettings() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -26,8 +24,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeDefaultSeriesState() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -103,8 +99,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeDefaultHomeScreenState() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -144,8 +138,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeImageQuality() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -189,8 +181,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeTitleLanguage() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -234,8 +224,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeThemeSetting() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -287,8 +275,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun changeRateOnCompletionSetting() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
@@ -300,8 +286,6 @@ class SettingsTestsK : BaseTestK() {
 
     @Test
     fun openOSS() {
-        launchActivity()
-
         mainScreen {
             goToSettings()
         }
